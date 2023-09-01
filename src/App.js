@@ -1,17 +1,23 @@
-import logo from './logo.svg'
-import './App.css'
+import { useState } from 'react'
+import { AddForm } from './components/AddForm'
+import { Todo } from './components/Todo'
+
+const date = [
+	{ title: 'todo1', id: 1, complited: true },
+	{ title: 'todo2', id: 2, complited: false },
+]
 
 function App() {
+	const [todo, setTodo] = useState(date)
+
+	const deliteTodo = id => {
+		setTodo(todo.filter(item => item.id !== id))
+	}
+
 	return (
-		<div className='App'>
-			<header className='App-header'>
-				<p>
-					Edit <code>src/App.js</code> and save to reload.
-				</p>
-				<a className='App-link' href='https://reactjs.org' target='_blank' rel='noopener noreferrer'>
-					Learn React
-				</a>
-			</header>
+		<div>
+			<AddForm />
+			<Todo deliteTodo={deliteTodo} todos={todo} />
 		</div>
 	)
 }
