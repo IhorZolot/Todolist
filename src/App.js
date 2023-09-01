@@ -13,10 +13,13 @@ function App() {
 	const deliteTodo = id => {
 		setTodo(todo.filter(item => item.id !== id))
 	}
+	const addtodo = todo => {
+		setTodo(prev => [...prev, todo])
+	}
 
 	return (
 		<div>
-			<AddForm />
+			<AddForm addtodo={addtodo} />
 			<Todo deliteTodo={deliteTodo} todos={todo} />
 		</div>
 	)
